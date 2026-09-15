@@ -13,9 +13,18 @@
 
   <header>
     <div class="header-inner">
-      <div class="logo">
-        <span class="logo-mark">◈</span>
-        <h1>Elbo Records</h1>
+      <div class="header-top">
+        <div class="logo">
+          <span class="logo-mark">◈</span>
+          <h1>Elbo Records</h1>
+        </div>
+        <button class="cart-btn" id="cart-btn" aria-label="Shopping cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-count" id="cart-count" hidden>0</span>
+        </button>
       </div>
       <p class="tagline">San Diego · Vinyl · Analog · Collectibles</p>
       <nav class="filters">
@@ -33,6 +42,26 @@
     <p id="empty-msg" class="empty-msg" style="display:none">No items found.</p>
   </main>
 
+  <!-- Cart drawer -->
+  <div id="cart-overlay" class="cart-overlay" aria-hidden="true"></div>
+  <aside id="cart-drawer" class="cart-drawer" aria-label="Shopping cart">
+    <div class="cart-header">
+      <h2>Cart</h2>
+      <button class="cart-close" id="cart-close" aria-label="Close cart">&times;</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-footer" id="cart-footer" style="display:none">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cart-total-price"></span>
+      </div>
+      <button class="checkout-btn" id="checkout-btn">Checkout via PayPal</button>
+      <form id="paypal-cart-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="display:none"></form>
+    </div>
+    <p class="cart-empty-msg" id="cart-empty-msg">Your cart is empty.</p>
+  </aside>
+
+  <!-- Item detail modal -->
   <div id="modal-overlay" class="modal-overlay" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true">
       <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
@@ -65,7 +94,7 @@
           </div>
           <p id="modal-price" class="modal-price"></p>
           <p id="modal-notes" class="modal-notes" style="display:none"></p>
-          <div id="modal-paypal" class="modal-paypal"></div>
+          <div id="modal-actions" class="modal-actions"></div>
         </div>
       </div>
     </div>
