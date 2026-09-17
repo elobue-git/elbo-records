@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /images/records/
+
+# Sitemap
+# Sitemap: https://elborecords.com/sitemap.xml
